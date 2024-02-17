@@ -1,8 +1,9 @@
-import React, {useEffect} from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const MatchPage = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const data = location.state;
 
     useEffect(() => {
@@ -29,13 +30,18 @@ const MatchPage = () => {
         }
 
         fetchData(data);
-    },[]);
+    }, [data]);
+
+    const redirectToCalendlyLinkPage = () => {
+        navigate('/enter-calendly');
+    };
 
     return (
         <div>
             <h1>You have been matched with...</h1>
             <p>Name: {data.name}</p>
             <p>Role: {data.senior}</p>
+            <button onClick={redirectToCalendlyLinkPage}>Enter Calendly Link</button> {}
         </div>
     );
 };
