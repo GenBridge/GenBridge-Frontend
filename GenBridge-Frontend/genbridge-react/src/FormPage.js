@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const FormPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { name, role } = location.state;
+    const { name, senior } = location.state;
 
     // State for form answers
     const [answer1, setAnswer1] = useState('');
@@ -12,8 +12,8 @@ const FormPage = () => {
 
     const handleSubmit = () => {
         // Here we collect the answers and pass them as formData
-        const formData = { question1: answer1, question2: answer2 };
-        navigate('/match', { state: { name, role, ...formData } });
+        const interests = [answer1, answer2];
+        navigate('/match', { state: { name, senior, interests } });
     };
 
     return (

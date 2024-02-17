@@ -6,15 +6,15 @@ const RolePage = () => {
     const navigate = useNavigate();
     const { name } = location.state;
 
-    const handleSubmit = (role) => {
-        navigate('/form', { state: { name: name, role: role } });
+    const handleSubmit = (senior) => {
+        navigate('/form', { state: { name: name, senior: senior } });
     };
 
     return (
         <div>
             <h1>Hello, {name}. Are you a junior or senior?</h1>
-            <button onClick={() => handleSubmit('Junior')}>Junior</button>
-            <button onClick={() => handleSubmit('Senior')}>Senior</button>
+            <button onClick={() => handleSubmit(false)}>Junior</button>
+            <button onClick={() => handleSubmit(true)}>Senior</button>
         </div>
     );
 };
