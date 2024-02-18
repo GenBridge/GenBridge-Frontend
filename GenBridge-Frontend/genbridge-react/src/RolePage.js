@@ -8,14 +8,17 @@ const RolePage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { name, speech, speechTimeoutIdRef } = location.state;
-    const transcript = useSpeechRecognition(speech, speechTimeoutIdRef);
-
-    console.log("role " +speech.toString()+" "+ transcript);
+    const {transcript, listening} = useSpeechRecognition(speech, speechTimeoutIdRef);
 
     useEffect(() => {
         if (speech && transcript) { // Only proceed if transcript is not empty
-            let distSenior = levenshteinDistance(transcript.toLowerCase(), "senior");
-            let distJunior = levenshteinDistance(transcript.toLowerCase(), "junior");
+            // Guard clause to ensure transcript is a string
+            if (typeof transcript !== 'string') {
+                console.error('transcript is not a string:', transcript);
+                return; // Exit if transcript is not a string
+            }
+            let distSenior = levenshteinDistance(transcript.trim().toLowerCase(), "senior");
+            let distJunior = levenshteinDistance(transcript.trim().toLowerCase(), "junior");
             let senior = distSenior < distJunior;
             console.log("senior: "+senior, "transcript:", transcript);
             handleSubmit(senior);

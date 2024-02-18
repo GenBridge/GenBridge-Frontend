@@ -66,7 +66,7 @@ const useSpeechRecognition = (speech) => {
             }
         };
     }, [speech]);
-    return transcript;
+    return {transcript, listening};
 }
 
 export default useSpeechRecognition;

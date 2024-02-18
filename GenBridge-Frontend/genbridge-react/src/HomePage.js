@@ -4,19 +4,45 @@ import './style.css'; // Make sure your CSS file is imported
 import logo from './creative-abstract-bridge-logo-design-template-1.png';
 import useSpeechRecognition from "./useSpeechRecognition";
 
-const HomePage = ({speech}) => {
+const HomePage = ({speech = false }) => {
     const [name, setName] = useState('');
     const navigate = useNavigate();
     const speechTimeoutIdRef = useRef(null);
-    const transcript = useSpeechRecognition(speech, speechTimeoutIdRef);
+
+    // Destructure `isListening` if your hook provides it, to better control the flow
+    const { transcript, isListening } = useSpeechRecognition(speech);
 
     useEffect(() => {
         setName(transcript); // Update name based on transcript change
-        return () => {};
     }, [transcript]);
 
+    useEffect(() => {
+        // Check if speech recognition has stopped and transcript is available
+        if (!isListening && transcript && speech) {
+            // Clear any existing timeout to ensure we don't navigate multiple times
+            if (speechTimeoutIdRef.current) {
+                clearTimeout(speechTimeoutIdRef.current);
+            }
+
+            // Wait for 2 seconds, then navigate
+            speechTimeoutIdRef.current = setTimeout(() => {
+                navigate('/role', { state: { name, speech } });
+            }, 2000);
+        }
+
+        // Cleanup timeout on component unmount
+        return () => {
+            if (speechTimeoutIdRef.current) {
+                clearTimeout(speechTimeoutIdRef.current);
+            }
+        };
+    }, [isListening, transcript, speech, navigate, name]);
+
     const handleSubmit = () => {
-        navigate('/role', { state: { name: name, speech: speech, speechTimeoutIdRef: speechTimeoutIdRef } });
+        // Manually handle submit when not using speech or before speech input is finished
+        if (!speech || !transcript) {
+            navigate('/role', { state: { name, speech } });
+        }
     };
 
     return (
