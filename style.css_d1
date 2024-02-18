@@ -1,0 +1,138 @@
+.desktop {
+  background-color: #f8f8f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.desktop .overlap-wrapper {
+  background-color: #f8f8f7;
+  height: 1024px;
+  overflow: hidden;
+  width: 1440px;
+}
+
+.desktop .overlap {
+  height: 1415px;
+  left: -89px;
+  position: relative;
+  top: -156px;
+  width: 1500px;
+}
+
+.desktop .vector {
+  height: 4px;
+  left: 250px;
+  position: absolute;
+  top: 301px;
+  width: 7px;
+}
+
+.desktop .overlap-group {
+  height: 1415px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1500px;
+}
+
+.desktop .welcome-to-genbridge {
+  color: #000000;
+  font-family: "Varela Round-Regular", Helvetica;
+  font-size: 40px;
+  font-weight: 400;
+  left: 409px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 545px;
+  width: 875px;
+}
+
+.desktop .ellipse {
+  background-color: #2596be1a;
+  border-radius: 180.5px/162.5px;
+  height: 325px;
+  left: 1101px;
+  position: absolute;
+  top: 1090px;
+  width: 361px;
+}
+
+.desktop .round-button-false-instance {
+  left: 417px !important;
+  position: absolute !important;
+  top: 763px !important;
+}
+
+.desktop .div {
+  background-color: #0064b1;
+  border-radius: 999px;
+  box-shadow: 0px 7px 21px #252c6133, 0px 3px 8px #8890c240;
+  height: 89px;
+  left: 305px;
+  position: absolute;
+  top: 927px;
+  width: 1035px;
+}
+
+.desktop .p {
+  color: transparent;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-size: 33px;
+  font-weight: 600;
+  left: 326px;
+  letter-spacing: 0;
+  line-height: 33px;
+  position: absolute;
+  top: 952px;
+  width: 994px;
+}
+
+.desktop .text-wrapper-2 {
+  color: #ffd603;
+}
+
+.desktop .text-wrapper-3 {
+  color: #f8f8f7;
+}
+
+.desktop .ellipse-2 {
+  background-color: #2596be1a;
+  border-radius: 180.5px/162.5px;
+  height: 325px;
+  left: 0;
+  position: absolute;
+  top: 991px;
+  width: 361px;
+}
+
+.desktop .ellipse-3 {
+  background-color: #2596be1a;
+  border-radius: 180.5px/172px;
+  height: 344px;
+  left: 1139px;
+  position: absolute;
+  top: 0;
+  width: 361px;
+}
+
+.desktop .ellipse-4 {
+  background-color: #2596be1a;
+  border-radius: 180.5px/162.5px;
+  height: 325px;
+  left: 257px;
+  position: absolute;
+  top: 253px;
+  width: 361px;
+}
+
+.desktop .creative-abstract {
+  height: 787px;
+  left: 417px;
+  object-fit: cover;
+  position: absolute;
+  top: 156px;
+  width: 827px;
+}
