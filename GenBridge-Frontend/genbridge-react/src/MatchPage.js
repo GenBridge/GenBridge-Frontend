@@ -22,18 +22,20 @@ const MatchPage = () => {
 
     // This function starts listening for the user's response
     const listenForConfirmation = (callback) => {
+        console.log("listening for confirmation")
         const recognition = new window.webkitSpeechRecognition();
         recognition.lang = 'en-US';
         recognition.start();
 
         recognition.onresult = (event) => {
             const transcript = event.results[0][0].transcript.trim().toLowerCase();
+            console.log("Done listening. Transcript: ", transcript)
             callback(transcript);
         };
     };
 
     const confirmTime = (transcript) => {
-        if (transcript === 'yes') {
+        if (transcript.toLowerCase().includes('yes')) {
             setCalendlyLink('./confirmation');
         } else {
             // Handle 'no' or other responses accordingly
@@ -41,7 +43,7 @@ const MatchPage = () => {
     };
 
     const confirmDate = (transcript) => {
-        if (transcript === 'yes') {
+        if (transcript.toLowerCase().includes('yes')) {
             setCalendlyLink('https://calendly.com/justusbeck/30min?back=1&month=2024-02&date=2024-02-19');
             setTimeout(() => {
                 speak('Is 9am fine for you?', () => listenForConfirmation(confirmTime));
