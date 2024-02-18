@@ -8,7 +8,7 @@ const RolePage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { name, speech, speechTimeoutIdRef } = location.state;
-    const {transcript, listening} = useSpeechRecognition(speech, speechTimeoutIdRef);
+    const {transcript, listening} = useSpeechRecognition(speech);
 
     useEffect(() => {
         if (speech && transcript) { // Only proceed if transcript is not empty

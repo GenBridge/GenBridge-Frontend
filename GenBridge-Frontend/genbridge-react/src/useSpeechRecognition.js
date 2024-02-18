@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from "react";
 
-const useSpeechRecognition = (speech) => {
+const useSpeechRecognition = (speech, duration=5) => {
     const [listening, setListening] = useState(false);
     const [transcript, setTranscript] = useState("");
     const timeoutIdRef = useRef(null);
@@ -21,10 +21,14 @@ const useSpeechRecognition = (speech) => {
         recognition.continuous = true; // Keep listening even after the speech ends
         recognition.interimResults = true; // Show results even if they're not final
 
-        // Event handlers
         recognition.onstart = () => {
             setListening(true);
-            console.log("started listening")
+            console.log("started listening");
+            // Move the setTimeout call here
+            timeoutIdRef.current = setTimeout(() => {
+                recognition.stop();
+                setListening(false);
+            }, duration*1000);
         };
         recognition.onend = () => {
             setListening(false);
@@ -49,13 +53,6 @@ const useSpeechRecognition = (speech) => {
 
         // Start listening
         recognition.start();
-
-        // Stop listening after 5 seconds
-        // Set the timeout when recognition actually starts
-        timeoutIdRef.current = setTimeout(() => {
-            recognition.stop();
-            setListening(false);
-        }, 5000);
 
         return () => {
             if (recognition) {
