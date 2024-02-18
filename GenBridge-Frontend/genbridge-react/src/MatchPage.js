@@ -78,7 +78,7 @@ const MatchPage = () => {
         fetchData();
         if (speech && !listening) {
             setTimeout(() => {
-                speak("The first slot is on Monday, February 19th. Do you have time on that day?", () => listenForConfirmation(confirmDate));
+                speak( "You have been matched for a call with Peter. The first slot is on Monday, February 19th. Do you have time on that day?", () => listenForConfirmation(confirmDate));
             }, 3000);        setListening(true);
         }
     }, [name, senior, interests]);
@@ -89,20 +89,19 @@ const MatchPage = () => {
             <h1 className="page-heading">You have been matched with...</h1>
             {result ? (
                 <>
-                    <p className="match-details">{result.user.name}</p>
+                    <p className="match-details">{"Peter"}</p>
                     {/* Add more details with similar styling as match-details */}
                     <div className="calendly-container">
                         <h1 className="page-subheading">Schedule a Call here:</h1>
-                        {result.user.calendly ? (
+
                             <iframe
                                 className="calendly-iframe"
                                 src={calendlyLink}
                                 frameBorder="0"
                                 title="Calendly"
                             ></iframe>
-                        ) : (
-                            <p className="no-calendly">No Calendly link provided</p>
-                        )}
+
+
                     </div>
                 </>
             ) : (
