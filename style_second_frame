@@ -1,0 +1,121 @@
+.desktop {
+  background-color: #f9f8f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.desktop .div {
+  background-color: #f9f8f7;
+  height: 1024px;
+  overflow: hidden;
+  position: relative;
+  width: 1440px;
+}
+
+.desktop .overlap {
+  height: 1287px;
+  left: -198px;
+  position: absolute;
+  top: -201px;
+  width: 1682px;
+}
+
+.desktop .overlap-group {
+  height: 1125px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1411px;
+}
+
+.desktop .overlap-group-2 {
+  height: 666px;
+  left: 309px;
+  position: absolute;
+  top: 240px;
+  width: 941px;
+}
+
+.desktop .text-wrapper-2 {
+  color: #000000;
+  font-family: "Varela Round-Regular", Helvetica;
+  font-size: 70px;
+  font-weight: 400;
+  left: 276px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 301px;
+  width: 665px;
+}
+
+.desktop .new-form {
+  background-color: #f9f8f7;
+  height: 194px;
+  left: 399px;
+  position: absolute;
+  top: 376px;
+  width: 420px;
+}
+
+.desktop .real-forms-text-input-text-input-1182 {
+  left: 50px !important;
+  position: relative !important;
+  top: 97px !important;
+}
+
+.desktop .real-forms-text-instance {
+  background-color: #f9f8f7 !important;
+}
+
+.desktop .ellipse {
+  background-color: #2596be1a;
+  border-radius: 180.5px/162.5px;
+  height: 325px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 361px;
+}
+
+.desktop .ellipse-2 {
+  background-color: #2596be1a;
+  border-radius: 180.5px/162.5px;
+  height: 325px;
+  left: 0;
+  position: absolute;
+  top: 800px;
+  width: 361px;
+}
+
+.desktop .ellipse-3 {
+  background-color: #2596be1a;
+  border-radius: 180.5px/162.5px;
+  height: 325px;
+  left: 1050px;
+  position: absolute;
+  top: 0;
+  width: 361px;
+}
+
+.desktop .ellipse-4 {
+  background-color: #2596be1a;
+  border-radius: 180.5px/162.5px;
+  height: 325px;
+  left: 1321px;
+  position: absolute;
+  top: 962px;
+  width: 361px;
+}
+
+.desktop .ellipse-5 {
+  background-color: #2596be1a;
+  border-radius: 180.5px/162.5px;
+  height: 325px;
+  left: 206px;
+  position: absolute;
+  top: 961px;
+  width: 361px;
+}
