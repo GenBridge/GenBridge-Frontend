@@ -28,26 +28,25 @@ const FormPage = () => {
         <div className="formpage-container">
             <img src={logo} alt="Logo" className="formpage-logo" />
             <h1 className="formpage-heading">Some questions for you</h1>
-            <form onSubmit={(e) => {
-                e.preventDefault();
-                handleSubmit();
-            }} className="formpage-form">
-                <div>
-                    <label htmlFor="question1">What is your favorite color?</label>
+            <form onSubmit={handleSubmit} className="formpage-form">
+                <div className="form-group">
+                    <label htmlFor="question1" className="form-label">What is your favorite color?</label>
                     <input
                         id="question1"
                         type="text"
                         value={answer1}
                         onChange={(e) => setAnswer1(e.target.value)}
+                        className="form-input"
                     />
                 </div>
-                <div>
-                    <label htmlFor="question2">What is your hobby?</label>
+                <div className="form-group">
+                    <label htmlFor="question2" className="form-label">What is your hobby?</label>
                     <input
                         id="question2"
                         type="text"
                         value={answer2}
                         onChange={(e) => setAnswer2(e.target.value)}
+                        className="form-input"
                     />
                 </div>
                 <button className="button" type="submit">Submit</button>

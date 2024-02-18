@@ -12,12 +12,12 @@
 
 .homepage-logo {
   max-width: 200px; /* Adjust size as needed */
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 
 .homepage-heading {
   color: #000000; /* Adjust text color as needed */
-  font-family: 'SansSerif'; /* Use a font that matches your design */
+  font-family: 'Open Sans', sans-serif; /* This is where you specify the font */
   margin-bottom: 20px;
 }
 
@@ -43,13 +43,12 @@
 }
 
 .rolepage-logo {
-  width: 150px; /* Adjust width as needed */
-  margin-bottom: 20px;
+  max-width: 200px; /* Adjust size as needed */
+  margin-bottom: 0px;
 }
 
 
 /* Form page */
-
 
 .formpage-container {
   display: flex;
@@ -59,11 +58,12 @@
   height: 100vh;
   background-color: #f8f8f7;
   font-family: 'Open Sans', sans-serif;
+  text-align: center; /* Ensure text is centered */
 }
 
 .formpage-logo {
-  width: 150px;
-  margin-bottom: 20px;
+  max-width: 200px;
+  margin-bottom: 30px;
 }
 
 .formpage-heading {
@@ -72,7 +72,25 @@
 }
 
 .formpage-form {
-  /* Add styles for your form */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block; /* Make the label a block element */
+  margin-bottom: 10px;
+}
+
+.form-input {
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  width: 300px; /* Set a fixed width or use max-width for responsiveness */
 }
 
 /* Calendly Link + Waiting room page */
@@ -88,8 +106,8 @@
 }
 
 .page-logo {
-  width: 150px;
-  margin-bottom: 20px;
+  max-width: 200px; /* Adjust size as needed */
+  margin-bottom: 0px;
 }
 
 .page-heading {
