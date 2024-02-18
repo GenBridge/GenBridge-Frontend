@@ -15,7 +15,7 @@ const HomePage = () => {
     return (
         <div className="homepage-container">
             <img src={logo} alt="Logo" className="homepage-logo" />
-            <h1 className="homepage-heading">What's your name?</h1>
+            <h1 className="homepage-heading">Welcome to GenBridge ☺️ What's your name?</h1>
             <div className="input-container">
                 <input
                     className="name-input"

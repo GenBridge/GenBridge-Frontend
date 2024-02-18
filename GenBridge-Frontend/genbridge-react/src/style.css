@@ -5,13 +5,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Full viewport height */
+  height: 90vh; /* Full viewport height */
+  text-align: center;
   font-family: 'Arial', sans-serif; /* Choose a font similar to the target design */
-  background-color: #f8f8f7; /* Your background color */
+  background-color: #FDFBFF; /* Your background color */
+  font-size: 50px; /* Increase font size */
 }
 
 .homepage-logo {
-  max-width: 200px; /* Adjust size as needed */
+  max-width: 5000px; /* Adjust size as needed */
   margin-bottom: 0px;
 }
 
@@ -34,6 +36,7 @@
   height: 100vh;
   font-family: 'Open Sans', sans-serif; /* This is where you specify the font */
   background-color: #f8f8f7;
+  font-size: 40px; /* Increase font size */
 }
 
 .rolepage-heading {
@@ -43,7 +46,7 @@
 }
 
 .rolepage-logo {
-  max-width: 200px; /* Adjust size as needed */
+  max-width: 5000px; /* Adjust size as needed */
   margin-bottom: 0px;
 }
 
@@ -55,35 +58,42 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 110vh;
   background-color: #f8f8f7;
   font-family: 'Open Sans', sans-serif;
   text-align: center; /* Ensure text is centered */
+  font-size: 40px; /* Increase font size */
 }
 
 .formpage-logo {
-  max-width: 200px;
-  margin-bottom: 30px;
+  max-width: 5000px;
+  margin-bottom: 0px;
+
 }
 
 .formpage-heading {
   color: #000000;
+  margin-top: 0px;
   margin-bottom: 30px;
+
 }
 
 .formpage-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 
 .form-group {
   margin-bottom: 20px;
+
 }
 
 .form-label {
   display: block; /* Make the label a block element */
   margin-bottom: 10px;
+
 }
 
 .form-input {
@@ -91,6 +101,7 @@
   border-radius: 20px;
   border: 1px solid #ccc;
   width: 300px; /* Set a fixed width or use max-width for responsiveness */
+  font-size: 40px; /* Increase font size */
 }
 
 /* Calendly Link + Waiting room page */
@@ -102,17 +113,21 @@
   justify-content: center;
   height: 100vh;
   background-color: #f8f8f7;
+  font-size: 35px; /* Increase font size */
   font-family: 'Open Sans', sans-serif;
+
 }
 
 .page-logo {
-  max-width: 200px; /* Adjust size as needed */
+  max-width: 5000px; /* Adjust size as needed */
   margin-bottom: 0px;
+
 }
 
 .page-heading {
   color: #000000;
   margin-bottom: 30px;
+
 }
 
 .page-input {
@@ -120,6 +135,7 @@
   border-radius: 20px;
   padding: 10px 15px;
   margin-bottom: 20px;
+
 }
 
 .page-form {
@@ -131,15 +147,20 @@
 .match-details {
   color: #555;
   font-size: 40px;
+
   /* Additional styles for the match details */
 }
 
 .calendly-container {
   margin: 20px;
+
+
+
   /* Style the container for the Calendly iframe */
 }
 
 .calendly-iframe {
+
   width: 100%;
   height: 600px; /* Adjust height as needed */
   border: none;
@@ -149,7 +170,7 @@
 .no-calendly,
 .no-match {
   color: #888;
-  font-size: 16px;
+  font-size: 30px;
   /* Styles for when there's no match or no Calendly link */
 }
 
@@ -164,26 +185,30 @@
 .name-input {
   border: 2px solid #ccc;
   border-radius: 20px;
-  padding: 10px 15px;
+  padding: 20px 200px;
   margin-bottom: 20px;
+  font-size: 50px;
 }
 
 .button {
   background-color: #0064b1; /* Button background color */
   color: white; /* Text color */
-  padding: 10px 20px; /* Padding inside the button */
+  padding: 20px 25px; /* Padding inside the button */
   border: none; /* Remove default border */
-  border-radius: 5px; /* Rounded corners */
+  border-radius: 30px; /* Rounded corners */
   cursor: pointer; /* Mouse pointer changes on hover */
   transition: background-color 0.3s; /* Smooth transition for hover effect */
+  font-size: 50px;
 }
 
 .button:hover {
   background-color: #004a86; /* Darker shade for hover effect */
+
 }
 
 .button-container {
   /* A container for the buttons if you want to style their layout collectively */
   display: flex;
   gap: 20px; /* Creates space between buttons */
+
 }
