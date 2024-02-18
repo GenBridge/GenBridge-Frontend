@@ -10,11 +10,11 @@ const useSpeechRecognition = (speech) => {
     useEffect(() => {
         if (!speech) {
             console.log("Speech recognition disabled");
-            return "";
+            return;
         }
         if (!SpeechRecognition) {
             console.error("Speech recognition not supported");
-            return "";
+            return;
         }
 
         const recognition = new SpeechRecognition();
