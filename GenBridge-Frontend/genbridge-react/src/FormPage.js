@@ -11,9 +11,15 @@ const FormPage = () => {
     const [answer2, setAnswer2] = useState('');
 
     const handleSubmit = () => {
-        // Here we collect the answers and pass them as formData
         const interests = [answer1, answer2];
-        navigate('/match', { state: { name, senior, interests } });
+        // Check if the user is a senior
+        if (senior) {
+            // If senior, navigate to MatchPage with the collected data
+            navigate('/match', { state: { name, senior, interests } });
+        } else {
+            // If not a senior (thus, a junior), navigate to EnterCalendlyLinkPage
+            navigate('/enter-calendly', { state: { name, senior, interests } });
+        }
     };
 
     return (

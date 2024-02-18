@@ -6,6 +6,8 @@ import FormPage from './FormPage';
 import MatchPage from './MatchPage';
 import EnterCalendlyLinkPage from './EnterCalendlyLinkPage';
 import DisplayCalendlyPage from './DisplayCalendlyPage';
+import WaitingRoom from './WaitingRoom';
+
 
 const App = () => {
     return (
@@ -17,6 +19,8 @@ const App = () => {
                 <Route path="/match" element={<MatchPage />} />
                 <Route path="/enter-calendly" element={<EnterCalendlyLinkPage />} />
                 <Route path="/display-calendly" element={<DisplayCalendlyPage />} />
+                <Route path="/waiting-room" element={<WaitingRoom />} />
+
             </Routes>
         </Router>
     );

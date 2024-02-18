@@ -28,7 +28,7 @@ const EnterCalendlyLinkPage = () => {
 
             const result = await response.json();
             console.log(result);
-            navigate('/display-calendly', { state: { ...juniorData, result } }); // Pass junior data and result to the next page
+            navigate('/waiting-room', { state: { ...juniorData, result } }); // Pass junior data and result to the next page
         } catch (error) {
             console.error('There was an error!', error);
         }
