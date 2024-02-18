@@ -1,0 +1,171 @@
+/* Home page */
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+  font-family: 'Arial', sans-serif; /* Choose a font similar to the target design */
+  background-color: #f8f8f7; /* Your background color */
+}
+
+.homepage-logo {
+  max-width: 200px; /* Adjust size as needed */
+  margin-bottom: 30px;
+}
+
+.homepage-heading {
+  color: #000000; /* Adjust text color as needed */
+  font-family: 'SansSerif'; /* Use a font that matches your design */
+  margin-bottom: 20px;
+}
+
+
+/* Role page */
+
+
+.rolepage-container {
+  /* Reuse styles from .homepage-container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: 'Open Sans', sans-serif; /* This is where you specify the font */
+  background-color: #f8f8f7;
+}
+
+.rolepage-heading {
+  /* Reuse styles from .homepage-heading and modify as needed */
+  color: #000000;
+  margin-bottom: 30px;
+}
+
+.rolepage-logo {
+  width: 150px; /* Adjust width as needed */
+  margin-bottom: 20px;
+}
+
+
+/* Form page */
+
+
+.formpage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f8f8f7;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.formpage-logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.formpage-heading {
+  color: #000000;
+  margin-bottom: 30px;
+}
+
+.formpage-form {
+  /* Add styles for your form */
+}
+
+/* Calendly Link + Waiting room page */
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f8f8f7;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.page-logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.page-heading {
+  color: #000000;
+  margin-bottom: 30px;
+}
+
+.page-input {
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+}
+
+.page-form {
+}
+
+/* Calendly iFrame and Match Page*/
+
+
+.match-details {
+  color: #555;
+  font-size: 40px;
+  /* Additional styles for the match details */
+}
+
+.calendly-container {
+  margin: 20px;
+  /* Style the container for the Calendly iframe */
+}
+
+.calendly-iframe {
+  width: 100%;
+  height: 600px; /* Adjust height as needed */
+  border: none;
+  /* Additional iframe styles */
+}
+
+.no-calendly,
+.no-match {
+  color: #888;
+  font-size: 16px;
+  /* Styles for when there's no match or no Calendly link */
+}
+
+
+/* Base styling */
+
+
+.input-container {
+  margin: 20px auto; /* Center the input and button */
+}
+
+.name-input {
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+}
+
+.button {
+  background-color: #0064b1; /* Button background color */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding inside the button */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Mouse pointer changes on hover */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.button:hover {
+  background-color: #004a86; /* Darker shade for hover effect */
+}
+
+.button-container {
+  /* A container for the buttons if you want to style their layout collectively */
+  display: flex;
+  gap: 20px; /* Creates space between buttons */
+}

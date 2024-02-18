@@ -7,6 +7,7 @@ import MatchPage from './MatchPage';
 import EnterCalendlyLinkPage from './EnterCalendlyLinkPage';
 import DisplayCalendlyPage from './DisplayCalendlyPage';
 import WaitingRoom from './WaitingRoom';
+import './style.css';
 
 
 const App = () => {

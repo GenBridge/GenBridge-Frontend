@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import logo from './creative-abstract-bridge-logo-design-template-1.png';
+import './style.css'; // Import your CSS styles
 
 // Page for Seniors
 const MatchPage = () => {
@@ -37,29 +39,29 @@ const MatchPage = () => {
     }, [name, senior, interests]);
 
     return (
-        <div>
-            <h1>You have been matched with...</h1>
+        <div className="page-container">
+            <img src={logo} alt="Logo" className="page-logo" />
+            <h1 className="page-heading">You have been matched with...</h1>
             {result ? (
                 <>
-                    <p>Name: {result.user.name}</p>
-                    {/* Add more properties as needed */}
-                    <div>
-                        <h1>Calendly Meeting</h1>
+                    <p className="match-details">{result.user.name}</p>
+                    {/* Add more details with similar styling as match-details */}
+                    <div className="calendly-container">
+                        <h1 className="page-subheading">Schedule a Call here:</h1>
                         {result.user.calendly ? (
                             <iframe
+                                className="calendly-iframe"
                                 src={result.user.calendly}
-                                width="100%"
-                                height="600px"
                                 frameBorder="0"
                                 title="Calendly"
                             ></iframe>
                         ) : (
-                            <p>No Calendly link provided</p>
+                            <p className="no-calendly">No Calendly link provided</p>
                         )}
                     </div>
                 </>
             ) : (
-                <p>No match found</p>
+                <p className="no-match">No match found</p>
             )}
         </div>
     );

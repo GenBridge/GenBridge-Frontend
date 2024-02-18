@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import logo from './creative-abstract-bridge-logo-design-template-1.png';
+import './style.css'; // Import your CSS styles
 
 const EnterCalendlyLinkPage = () => {
     const location = useLocation();
@@ -35,17 +37,19 @@ const EnterCalendlyLinkPage = () => {
     };
 
     return (
-        <div>
-            <h1>Enter Your Calendly Link</h1>
-            <form onSubmit={handleSubmit}>
+        <div className="page-container">
+            <img src={logo} alt="Logo" className="page-logo" />
+            <h1 className="page-heading">Enter Your Calendly Link</h1>
+            <form onSubmit={handleSubmit} className="page-form">
                 <input
+                    className="page-input"
                     type="text"
                     value={calendlyLink}
                     onChange={(e) => setCalendlyLink(e.target.value)}
                     placeholder="Enter your Calendly URL"
                     required
                 />
-                <button type="submit">Submit</button>
+                <button className="button" type="submit">Submit</button>
             </form>
         </div>
     );

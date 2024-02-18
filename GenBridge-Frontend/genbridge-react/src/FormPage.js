@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import logo from './creative-abstract-bridge-logo-design-template-1.png';
+import './style.css'; // Import your CSS styles
 
 const FormPage = () => {
     const location = useLocation();
@@ -23,12 +25,13 @@ const FormPage = () => {
     };
 
     return (
-        <div>
-            <h1>Some questions for you</h1>
+        <div className="formpage-container">
+            <img src={logo} alt="Logo" className="formpage-logo" />
+            <h1 className="formpage-heading">Some questions for you</h1>
             <form onSubmit={(e) => {
                 e.preventDefault();
                 handleSubmit();
-            }}>
+            }} className="formpage-form">
                 <div>
                     <label htmlFor="question1">What is your favorite color?</label>
                     <input
@@ -47,7 +50,7 @@ const FormPage = () => {
                         onChange={(e) => setAnswer2(e.target.value)}
                     />
                 </div>
-                <button type="submit">Submit</button>
+                <button className="button" type="submit">Submit</button>
             </form>
         </div>
     );
