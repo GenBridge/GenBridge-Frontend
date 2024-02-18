@@ -43,7 +43,6 @@ const MatchPage = () => {
                 <>
                     <p>Name: {result.user.name}</p>
                     {/* Add more properties as needed */}
-                    return (
                     <div>
                         <h1>Calendly Meeting</h1>
                         {result.user.calendly ? (
@@ -58,7 +57,6 @@ const MatchPage = () => {
                             <p>No Calendly link provided</p>
                         )}
                     </div>
-                    );
                 </>
             ) : (
                 <p>No match found</p>
