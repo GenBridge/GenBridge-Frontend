@@ -8,13 +8,15 @@ import EnterCalendlyLinkPage from './EnterCalendlyLinkPage';
 import DisplayCalendlyPage from './DisplayCalendlyPage';
 import WaitingRoom from './WaitingRoom';
 import './style.css';
+import HomePageSpeech from "./HomePageSpeech";
 
 
 const App = () => {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<HomePage />} />
+                <Route path="/" element={<HomePage speech={false}/>} />
+                <Route path="/speech" element={<HomePageSpeech />} />
                 <Route path="/role" element={<RolePage />} />
                 <Route path="/form" element={<FormPage />} />
                 <Route path="/match" element={<MatchPage />} />
