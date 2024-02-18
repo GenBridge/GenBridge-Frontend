@@ -41,10 +41,10 @@ const MatchPage = () => {
     const handleRedirect = () => {
         if (senior) {
             // Redirect somewhere else if senior is true
-            navigate('/some-other-page');
+            navigate('/some-other-page', { state: { name, senior, interests } });
         } else {
             // Redirect to enter Calendly link page if senior is false
-            navigate('/enter-calendly');
+            navigate('/enter-calendly', { state: { name, senior, interests } });
         }
     };
 
