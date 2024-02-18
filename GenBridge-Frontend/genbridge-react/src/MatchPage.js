@@ -6,7 +6,7 @@ import './style.css'; // Import your CSS styles
 // Page for Seniors
 const MatchPage = () => {
     const location = useLocation();
-    const { name, senior, interests } = location.state; // Destructure the needed data
+    const { name, senior, interests, speech } = location.state; // Destructure the needed data
     let calendly = ""
     const [calendlyLink, setCalendlyLink] = useState('https://calendly.com/justusbeck/30min?back=1&month=2024-02 ');
     const [listening, setListening] = useState(false);
@@ -74,7 +74,7 @@ const MatchPage = () => {
             }
         }
         fetchData();
-        if (!listening) {
+        if (speech && !listening) {
             setTimeout(() => {
                 speak("The first slot is on Monday, February 19th. Do you have time on that day?", () => listenForConfirmation(confirmDate));
             }, 3000);        setListening(true);

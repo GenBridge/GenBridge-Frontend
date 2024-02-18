@@ -6,7 +6,7 @@ import './style.css'; // Import your CSS styles
 const FormPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { name, senior } = location.state;
+    const { name, senior, speech } = location.state;
 
     // State for form answers
     const [answer1, setAnswer1] = useState('');
@@ -17,7 +17,7 @@ const FormPage = () => {
         // Check if the user is a senior
         if (senior) {
             // If senior, navigate to MatchPage with the collected data
-            navigate('/match', { state: { name, senior, interests } });
+            navigate('/match', { state: { name, senior, interests, speech } });
         } else {
             // If not a senior (thus, a junior), navigate to EnterCalendlyLinkPage
             navigate('/enter-calendly', { state: { name, senior, interests } });

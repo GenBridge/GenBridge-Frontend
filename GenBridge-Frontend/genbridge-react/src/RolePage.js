@@ -26,7 +26,7 @@ const RolePage = () => {
     }, [transcript]);
 
     const handleSubmit = (senior) => {
-        navigate('/form', { state: { name: name, senior: senior } });
+        navigate('/form', { state: { name: name, senior: senior, speech: speech } });
     };
 
     return (
