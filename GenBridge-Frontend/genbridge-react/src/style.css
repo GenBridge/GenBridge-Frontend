@@ -20,7 +20,10 @@
 .homepage-heading {
   color: #000000; /* Adjust text color as needed */
   font-family: 'Open Sans', sans-serif; /* This is where you specify the font */
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  font-size: 100px;
+
 }
 
 
