@@ -30,7 +30,7 @@ const FormPage = () => {
             <h1 className="formpage-heading">Some questions for you</h1>
             <form onSubmit={handleSubmit} className="formpage-form">
                 <div className="form-group">
-                    <label htmlFor="question1" className="form-label">What is your favorite color?</label>
+                    <label htmlFor="question1" className="form-label">What do/did you work as?</label>
                     <input
                         id="question1"
                         type="text"
@@ -40,7 +40,7 @@ const FormPage = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="question2" className="form-label">What is your hobby?</label>
+                    <label htmlFor="question2" className="form-label">What do you do for fun?</label>
                     <input
                         id="question2"
                         type="text"
