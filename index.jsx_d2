@@ -1,0 +1,30 @@
+import React from "react";
+import { RealFormsText } from "./RealFormsText";
+import "./style.css";
+
+export const Desktop = () => {
+  return (
+    <div className="desktop">
+      <div className="div">
+        <div className="overlap">
+          <div className="overlap-group">
+            <div className="text-wrapper-2">What is your name?</div>
+            <div className="new-form">
+              <RealFormsText
+                active="inactive"
+                className="real-forms-text-input-text-input-1182"
+                filled={false}
+                frameClassName="real-forms-text-instance"
+              />
+            </div>
+            <div className="ellipse" />
+          </div>
+          <div className="ellipse-2" />
+        </div>
+        <div className="ellipse-3" />
+        <div className="ellipse-4" />
+        <div className="ellipse-5" />
+      </div>
+    </div>
+  );
+};
