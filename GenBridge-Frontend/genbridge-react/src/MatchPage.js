@@ -8,9 +8,47 @@ const MatchPage = () => {
     const location = useLocation();
     const { name, senior, interests } = location.state; // Destructure the needed data
     let calendly = ""
+    const [calendlyLink, setCalendlyLink] = useState('https://calendly.com/justusbeck/30min?back=1&month=2024-02 ');
+    const [listening, setListening] = useState(false);
 
     // Initialize state to store the fetched result
     const [result, setResult] = useState(null);
+
+    const speak = (text, callback) => {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.onend = callback;
+        speechSynthesis.speak(utterance);
+    };
+
+    // This function starts listening for the user's response
+    const listenForConfirmation = (callback) => {
+        const recognition = new window.webkitSpeechRecognition();
+        recognition.lang = 'en-US';
+        recognition.start();
+
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript.trim().toLowerCase();
+            callback(transcript);
+        };
+    };
+
+    const confirmTime = (transcript) => {
+        if (transcript === 'yes') {
+            setCalendlyLink('./confirmation');
+        } else {
+            // Handle 'no' or other responses accordingly
+        }
+    };
+
+    const confirmDate = (transcript) => {
+        if (transcript === 'yes') {
+            setCalendlyLink('https://calendly.com/justusbeck/30min?back=1&month=2024-02&date=2024-02-19');
+            setTimeout(() => {
+                speak('Is 9am fine for you?', () => listenForConfirmation(confirmTime));
+            }, 3000); // Delay the speech for 3 seconds        } else {
+            // Handle 'no' or other responses accordingly
+        }
+    };
 
     useEffect(() => {
         // Only perform the database entry if senior is true
@@ -36,6 +74,11 @@ const MatchPage = () => {
             }
         }
         fetchData();
+        if (!listening) {
+            setTimeout(() => {
+                speak("The first slot is on Monday, February 19th. Do you have time on that day?", () => listenForConfirmation(confirmDate));
+            }, 3000);        setListening(true);
+        }
     }, [name, senior, interests]);
 
     return (
@@ -51,7 +94,7 @@ const MatchPage = () => {
                         {result.user.calendly ? (
                             <iframe
                                 className="calendly-iframe"
-                                src={result.user.calendly}
+                                src={calendlyLink}
                                 frameBorder="0"
                                 title="Calendly"
                             ></iframe>

@@ -7,6 +7,7 @@ import MatchPage from './MatchPage';
 import EnterCalendlyLinkPage from './EnterCalendlyLinkPage';
 import DisplayCalendlyPage from './DisplayCalendlyPage';
 import WaitingRoom from './WaitingRoom';
+import ConfirmationPage from './ConfirmationPage';
 import './style.css';
 import HomePageSpeech from "./HomePageSpeech";
 
@@ -23,6 +24,7 @@ const App = () => {
                 <Route path="/enter-calendly" element={<EnterCalendlyLinkPage />} />
                 <Route path="/display-calendly" element={<DisplayCalendlyPage />} />
                 <Route path="/waiting-room" element={<WaitingRoom />} />
+                <Route path="/confirmation" element={<ConfirmationPage />} />
 
             </Routes>
         </Router>
