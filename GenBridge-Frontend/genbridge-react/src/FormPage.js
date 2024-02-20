@@ -1,56 +1,59 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import logo from './creative-abstract-bridge-logo-design-template-1.png';
 import './style.css';
-import useSpeechRecognition from "./useSpeechRecognition"; // Import your CSS styles
+import useSpeechRecognition from "./useSpeechRecognition";
 
 const FormPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { name, senior, speech } = location.state;
-
-    // State for form answers
     const [answer1, setAnswer1] = useState('');
-
+    const [spoken, setSpoken] = useState(false); // State to track if initial speech has been spoken
     const speechTimeoutIdRef = useRef(null);
-
-    // Destructure `isListening` if your hook provides it, to better control the flow
-    const { transcript, isListening } = useSpeechRecognition(speech, 10);
+    const { transcript, isListening } = useSpeechRecognition(speech && spoken); // Start listening after speech
 
     useEffect(() => {
-        setAnswer1(transcript); // Update name based on transcript change
+        // Function to handle speech synthesis
+        const speak = (text, callback) => {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.onend = callback;
+            speechSynthesis.speak(utterance);
+        };
+
+        // Trigger initial speech when the component mounts and speech is enabled
+        if (speech && !spoken) {
+            speak("What do you do for fun?", () => setSpoken(true));
+        }
+    }, [speech, spoken]);
+
+    useEffect(() => {
+        setAnswer1(transcript); // Update answer based on transcript change
     }, [transcript]);
 
     useEffect(() => {
-        // Check if speech recognition has stopped and transcript is available
-        if (!isListening && transcript && speech) {
-            // Clear any existing timeout to ensure we don't navigate multiple times
+        // Check if speech recognition has stopped, transcript is available, and initial speech has been spoken
+        if (!isListening && transcript && speech && spoken) {
             if (speechTimeoutIdRef.current) {
                 clearTimeout(speechTimeoutIdRef.current);
             }
-
-            // Wait for 2 seconds, then navigate
             speechTimeoutIdRef.current = setTimeout(() => {
                 handleSubmit();
             }, 2000);
         }
 
-        // Cleanup timeout on component unmount
         return () => {
             if (speechTimeoutIdRef.current) {
                 clearTimeout(speechTimeoutIdRef.current);
             }
         };
-    }, [isListening, transcript, speech, navigate, name]);
+    }, [isListening, transcript, speech, navigate, name, spoken]);
 
     const handleSubmit = () => {
         const interests = [answer1];
-        // Check if the user is a senior
         if (senior) {
-            // If senior, navigate to MatchPage with the collected data
             navigate('/match', { state: { name, senior, interests, speech } });
         } else {
-            // If not a senior (thus, a junior), navigate to EnterCalendlyLinkPage
             navigate('/enter-calendly', { state: { name, senior, interests } });
         }
     };

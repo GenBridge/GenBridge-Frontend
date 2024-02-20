@@ -14,10 +14,21 @@ const MatchPage = () => {
     // Initialize state to store the fetched result
     const [result, setResult] = useState(null);
 
+
     const speak = (text, callback) => {
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.onend = callback;
         speechSynthesis.speak(utterance);
+    };
+
+    const handleIframeLoad = () => {
+        // Check if the current iframe is the confirmation page
+        if (calendlyLink.includes('./confirmation')) {
+            // Trigger the speech synthesis message
+            speak("Your meeting has been scheduled successfully.", () => {
+                console.log("Confirmation message spoken.");
+            });
+        }
     };
 
     // This function starts listening for the user's response
@@ -25,6 +36,7 @@ const MatchPage = () => {
         console.log("listening for confirmation")
         const recognition = new window.webkitSpeechRecognition();
         recognition.lang = 'en-US';
+        recognition.continuous = true; // Keep listening even after the speech ends
         recognition.start();
 
         recognition.onresult = (event) => {
@@ -85,23 +97,19 @@ const MatchPage = () => {
 
     return (
         <div className="page-container">
-            <img src={logo} alt="Logo" className="page-logo" />
             <h1 className="page-heading">You have been matched with...</h1>
             {result ? (
                 <>
                     <p className="match-details">{"Peter"}</p>
-                    {/* Add more details with similar styling as match-details */}
                     <div className="calendly-container">
                         <h1 className="page-subheading">Schedule a Call here:</h1>
-
-                            <iframe
-                                className="calendly-iframe"
-                                src={calendlyLink}
-                                frameBorder="0"
-                                title="Calendly"
-                            ></iframe>
-
-
+                        <iframe
+                            className="calendly-iframe"
+                            src={calendlyLink}
+                            onLoad={handleIframeLoad}
+                            frameBorder="0"
+                            title="Calendly"
+                        ></iframe>
                     </div>
                 </>
             ) : (
@@ -110,5 +118,6 @@ const MatchPage = () => {
         </div>
     );
 };
+
 
 export default MatchPage;

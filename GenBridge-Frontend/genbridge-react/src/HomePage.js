@@ -1,45 +1,54 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './style.css'; // Make sure your CSS file is imported
+import './style.css';
 import logo from './creative-abstract-bridge-logo-design-template-1.png';
 import useSpeechRecognition from "./useSpeechRecognition";
 
-const HomePage = ({speech = false }) => {
+const HomePage = ({ speech = false }) => {
     const [name, setName] = useState('');
+    const [spoken, setSpoken] = useState(false); // New state to track if the initial speech has been spoken
     const navigate = useNavigate();
     const speechTimeoutIdRef = useRef(null);
+    const { transcript, isListening } = useSpeechRecognition(speech && spoken); // Start listening only if spoken is true
 
-    // Destructure `isListening` if your hook provides it, to better control the flow
-    const { transcript, isListening } = useSpeechRecognition(speech);
+    const speak = (text, callback) => {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.onend = () => {
+            setSpoken(true); // Set spoken to true when speech synthesis is finished
+            if (typeof callback === "function") callback(); // Call additional callback if provided
+        };
+        speechSynthesis.speak(utterance);
+    };
+
+    useEffect(() => {
+        // Trigger initial speech when the component mounts
+        if (speech && !spoken) {
+            speak("Welcome to GenBridge.️ What's your name?");
+        }
+    }, [speech, spoken]); // Dependency on 'spoken' ensures this effect doesn't re-run after the initial speech
 
     useEffect(() => {
         setName(transcript); // Update name based on transcript change
     }, [transcript]);
 
     useEffect(() => {
-        // Check if speech recognition has stopped and transcript is available
-        if (!isListening && transcript && speech) {
-            // Clear any existing timeout to ensure we don't navigate multiple times
+        if (!isListening && transcript && speech && spoken) {
             if (speechTimeoutIdRef.current) {
                 clearTimeout(speechTimeoutIdRef.current);
             }
-
-            // Wait for 2 seconds, then navigate
             speechTimeoutIdRef.current = setTimeout(() => {
                 navigate('/role', { state: { name, speech } });
             }, 2000);
         }
 
-        // Cleanup timeout on component unmount
         return () => {
             if (speechTimeoutIdRef.current) {
                 clearTimeout(speechTimeoutIdRef.current);
             }
         };
-    }, [isListening, transcript, speech, navigate, name]);
+    }, [isListening, transcript, speech, navigate, name, spoken]);
 
     const handleSubmit = () => {
-        // Manually handle submit when not using speech or before speech input is finished
         if (!speech || !transcript) {
             navigate('/role', { state: { name, speech } });
         }

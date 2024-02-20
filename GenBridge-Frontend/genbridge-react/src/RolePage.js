@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import './style.css'; // Import the same styles as used in HomePage
+import './style.css';
 import logo from './creative-abstract-bridge-logo-design-template-1.png';
 import useSpeechRecognition from "./useSpeechRecognition";
 
@@ -8,30 +8,40 @@ const RolePage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { name, speech, speechTimeoutIdRef } = location.state;
-    const {transcript, listening} = useSpeechRecognition(speech);
+    const [spoken, setSpoken] = useState(false); // State to track if the initial speech has been spoken
+    const { transcript, listening } = useSpeechRecognition(speech && spoken); // Start listening after speech
 
     useEffect(() => {
-        if (speech && transcript) { // Only proceed if transcript is not empty
-            // Guard clause to ensure transcript is a string
-            if (typeof transcript !== 'string') {
-                console.error('transcript is not a string:', transcript);
-                return; // Exit if transcript is not a string
-            }
+        // Function to handle speech synthesis
+        const speak = (text, callback) => {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.onend = callback;
+            speechSynthesis.speak(utterance);
+        };
+
+        // Trigger initial speech when the component mounts and speech is enabled
+        if (speech && !spoken) {
+            speak(`Hello, ${name}. Are you a junior or senior?`, () => setSpoken(true));
+        }
+    }, [speech, spoken, name]);
+
+    useEffect(() => {
+        if (speech && transcript) {
             let distSenior = levenshteinDistance(transcript.trim().toLowerCase(), "senior");
             let distJunior = levenshteinDistance(transcript.trim().toLowerCase(), "junior");
-            let senior = distSenior < distJunior;
+            let senior = true; //distSenior < distJunior;
             console.log("senior: "+senior, "transcript:", transcript);
             handleSubmit(senior);
         }
-    }, [transcript]);
+    }, [transcript, speech]);
 
     const handleSubmit = (senior) => {
-        navigate('/form', { state: { name: name, senior: senior, speech: speech } });
+        navigate('/form', { state: { name, senior, speech } });
     };
 
     return (
         <div className="rolepage-container">
-            <img src={logo} alt="Logo" className="rolepage-logo" /> {/* Add the logo image */}
+            <img src={logo} alt="Logo" className="rolepage-logo" />
             <h1 className="rolepage-heading">Hello, {name}. Are you a junior or senior?</h1>
             <div className="button-container">
                 <button className="button" onClick={() => handleSubmit(false)}>Junior</button>
